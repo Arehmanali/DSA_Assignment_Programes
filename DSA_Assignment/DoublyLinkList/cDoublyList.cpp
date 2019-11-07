@@ -122,7 +122,34 @@ cDoublyList& cDoublyList::insertAt(int index, cNode*& ptr)
 	return *this;
 }
 
+cDoublyList::cDoublyList(const cDoublyList& src)
+{
+	this->leftHead = leftHead;
+	this->rightHead = rightHead;
+	this->count = count;
+	if (count > 0)
+	{
+		cNode* sptr, *dptr;
+		dptr = leftHead = new cNode(*src.leftHead);
+		sptr = src.leftHead->right;
+		for (int i = 1; i < count; ++i)
+		{
+			dptr->right = new cNode(*sptr);
+			dptr->right->left = dptr;
+			dptr=dptr->right;
+			sptr = sptr->right;
+		}
+		rightHead = dptr;
+		rightHead->right = NULL;
+	}
+}
+
 cDoublyList::~cDoublyList()
 {
-
+	for(int i=0;i<count;++i)
+	{
+		rightHead=leftHead;
+		leftHead=leftHead->right;
+		delete rightHead;
+	}
 }

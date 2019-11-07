@@ -17,6 +17,7 @@ public:
 	cDoublyList& insertToLeft(cNode*& ptr);
 	cDoublyList& insertToRight(cNode*& ptr);
 	cDoublyList& insertAt(int index, cNode*& ptr);
+	cDoublyList(const cDoublyList & src);
 	~cDoublyList();
 };
 

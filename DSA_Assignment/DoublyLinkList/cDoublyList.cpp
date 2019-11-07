@@ -124,9 +124,9 @@ cDoublyList& cDoublyList::insertAt(int index, cNode*& ptr)
 
 cDoublyList::cDoublyList(const cDoublyList& src)
 {
-	this->leftHead = leftHead;
-	this->rightHead = rightHead;
-	this->count = count;
+	this->leftHead = src.leftHead;
+	this->rightHead = src.rightHead;
+	this->count = src.count;
 	if (count > 0)
 	{
 		cNode* sptr, *dptr;

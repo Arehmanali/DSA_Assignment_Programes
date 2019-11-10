@@ -2,6 +2,7 @@
 #include<iostream>
 using namespace std;
 
+/*Default Constructor */
 cDoublyList::cDoublyList()
 {
 	count = 0;
@@ -9,6 +10,7 @@ cDoublyList::cDoublyList()
 	rightHead = NULL;
 }
 
+/* parametric constructor for initializing the cDoublyList*/
 cDoublyList::cDoublyList(cNode*& ptr)
 {
 	leftHead = ptr;
@@ -17,6 +19,7 @@ cDoublyList::cDoublyList(cNode*& ptr)
 	leftHead->right = rightHead->left = ptr = NULL;
 }
 
+/*print function for printing the list from left to right as default*/
 void cDoublyList::print(bool leftToRight) const
 {
 	int i; cNode* ptr;
@@ -30,6 +33,7 @@ void cDoublyList::print(bool leftToRight) const
 	}
 }
 
+/* remove function for removing the left most nodes from the list*/
 cNode* cDoublyList::removeFromLeft()
 {
 	cNode* ptr;
@@ -45,6 +49,7 @@ cNode* cDoublyList::removeFromLeft()
 	else return NULL;
 }
 
+/* remove function for removing the right most nodes from the list*/
 cNode* cDoublyList::removeFromRight()
 {
 	cNode* ptr;
@@ -79,6 +84,7 @@ cNode* cDoublyList::removeAt(int index)
 	return ptr;
 }
 
+/* insert function for inserting the node at the right corner of list*/
 cDoublyList& cDoublyList::insertToLeft(cNode*& ptr)
 {
 	ptr->right = leftHead;
@@ -90,6 +96,7 @@ cDoublyList& cDoublyList::insertToLeft(cNode*& ptr)
 	return *this;
 }
 
+/* insert function for inserting the node at the left corner of list*/
 cDoublyList& cDoublyList::insertToRight(cNode*& ptr)
 {
 	ptr->left = rightHead;
@@ -101,6 +108,7 @@ cDoublyList& cDoublyList::insertToRight(cNode*& ptr)
 	return *this;
 }
 
+/* insertAt function for inserting the node at the specific index in the list*/
 cDoublyList& cDoublyList::insertAt(int index, cNode*& ptr)
 {
 	if (index <= 0)return insertToLeft(ptr);
@@ -122,6 +130,7 @@ cDoublyList& cDoublyList::insertAt(int index, cNode*& ptr)
 	return *this;
 }
 
+/* Copy constructor*/
 cDoublyList::cDoublyList(const cDoublyList& src)
 {
 	this->leftHead = src.leftHead;
@@ -144,6 +153,7 @@ cDoublyList::cDoublyList(const cDoublyList& src)
 	}
 }
 
+/* destructor*/
 cDoublyList::~cDoublyList()
 {
 	for(int i=0;i<count;++i)

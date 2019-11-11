@@ -2,9 +2,10 @@
 #include<fstream>
 using namespace std;
 
-
+/* default constructor */
 cCircularList::cCircularList():head(NULL),count(0){}
 
+/*parametric constructor*/
 cCircularList::cCircularList(cNode*& ptr)
 {
 	head = ptr;
@@ -13,6 +14,7 @@ cCircularList::cCircularList(cNode*& ptr)
 	ptr = NULL;
 }
 
+/* copy consructor*/
 cCircularList::cCircularList(const cCircularList& src)
 {
 	this->head = src.head;
@@ -32,6 +34,7 @@ cCircularList::cCircularList(const cCircularList& src)
 	}
 }
 
+/* operator for assignment of lists*/
 cCircularList& cCircularList::operator=(const cCircularList& robj)
 {
 	if (this == &robj) return *this;
@@ -51,6 +54,7 @@ cCircularList& cCircularList::operator=(const cCircularList& robj)
 	return *this;
 }
 
+/*remove function for removing the nodes from list*/
 cNode* cCircularList::remove()
 {
 	cNode* ptr;
@@ -67,6 +71,7 @@ cNode* cCircularList::remove()
 	--count;
 	return ptr;
 }
+
 
 cCircularList::cCircularList(ifstream& inFile)
 {
@@ -139,6 +144,7 @@ int cCircularList::getCount()
 	return count;
 }
 
+/* removeAt function for emoving of nodes at specific index in the list*/
 cNode* cCircularList::removeAt(int index)
 {
 	if (index <= 0) return remove();
@@ -154,6 +160,7 @@ cNode* cCircularList::removeAt(int index)
 	return ptr;
 }
 
+/*insert function for inserting the nodes*/
 cCircularList& cCircularList::insert(cNode*& ptr)
 {
 	if (head)
@@ -171,6 +178,7 @@ cCircularList& cCircularList::insert(cNode*& ptr)
 	return *this;
 }
 
+/* insert function for inserting the new nodes at particular index in the list*/
 cCircularList& cCircularList::insertAt(int index,cNode*& ptr)
 {
 	if (index < 0)index = 0;
@@ -186,6 +194,7 @@ cCircularList& cCircularList::insertAt(int index,cNode*& ptr)
 	return *this;
 }
 
+/* function for checking the emptyness of list*/
 bool cCircularList::isEmpty() const
 {
 	if (head==NULL) return true;
